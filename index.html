@@ -8,12 +8,15 @@
     <title>Document</title>
 </head>
 
-<body>
-    <canvas width="400" height="400" style="border:1px solid black"></canvas>
-    <video src="" style="width:200px;height:200px;border:2px solid black"></video>
-    <img src="" style="width:200px;height:200px;border:2px solid black" />
+<body style="padding:'0px';overflow:hidden">
+    <canvas width="0" height="0" style="border:1px solid black;display:hidden"></canvas>
+    <video src="" style="left:0px;top:0px;margin:0px;background-color:black;width:50%;height:100%;border:2px solid black;position:absolute;z-index:4"></video>
+    <button style="position:absolute;top:0px;left:0px;z-index:5" id=save>save</button>
 
-    <button>Ok</button>
+    <div>
+        <button style="position:absolute;top:0px;right:0px;z-index:2" id=close>close</button>
+        <img src="" style="position:absolute;width:50%;height:100%;z-index:1;top:0px;right:0px;border:2px solid black" />
+    </div>
     <script>
         var ctx = document.querySelector('canvas').getContext('2d');
         ctx.fillStyle = 'blue';
@@ -48,20 +51,26 @@
                 })
                 cc.canvasCaptureMediaStream;
                 console.log();
-                document.querySelector('button').addEventListener('click', () => {
+                document.querySelector('#save').addEventListener('click', () => {
                     this.cc.width = document.querySelector('video').videoWidth;
                     this.cc.height = document.querySelector('video').videoHeight;
                     t2t2 = cc.getContext('2d').drawImage(document.querySelector('video'), 0, 0);
                     result = new Promise((r) => cc.toBlob((blob) => r(blob), 'image/jpeg'));
                     result.then(dd => this.dta = dd);
                     document.querySelector('img').src = URL.createObjectURL(dta);
+                    document.querySelector('video').style.zIndex = 0;
 
                     this.ctx.drawImage(document.querySelector('img'), 10, 10);
+                })
+                document.querySelector('#close').addEventListener('click', () => {
+                    document.querySelector('video').style.zIndex = 4;
+
                 })
             });
 
 
         });
+
 
 
 
