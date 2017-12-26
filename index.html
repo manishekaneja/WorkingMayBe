@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas width="400" height="400" style="border:1px solid black"></canvas>
+    <video src="" style="width:200px;height:200px;border:2px solid black"></video>
+    <img src="" style="width:200px;height:200px;border:2px solid black" />
+
+    <button>Ok</button>
+    <script>
+        var ctx = document.querySelector('canvas').getContext('2d');
+        ctx.fillStyle = 'blue';
+        navi = navigator;
+        navi.mediaDevices.enumerateDevices().then((data) => {
+
+            devi = data.filter((d) => d.kind === 'videoinput');
+            devi = devi[0];
+            obj = {
+                video: {
+                    deviceId: '',
+                    facingMode: ['user', 'environment'],
+                    height: { ideal: 1080 },
+                    width: { ideal: 1920 },
+                },
+            };
+            obj.video.deviceId = devi.deviceId;
+            navigator.mediaDevices.getUserMedia(obj).then((dd) => {
+                track = dd.getVideoTracks()[0];
+                this.abc = track;
+                console.log(abc);
+                this.zozo = window.URL.createObjectURL(dd);
+                console.log(zozo);
+                console.log(track);
+                document.querySelector('video').src = zozo;
+                this.cc = document.createElement('canvas');
+                const context = cc.getContext('2d');
+                document.querySelector('canvas').getContext('2d').drawImage(document.querySelector('video'), 0, 0);
+                console.log(document.querySelector('video').src);
+                document.querySelector('button').addEventListener('click', () => {
+                    document.querySelector('img').src
+                })
+                cc.canvasCaptureMediaStream;
+                console.log();
+                document.querySelector('button').addEventListener('click', () => {
+                    this.cc.width = document.querySelector('video').videoWidth;
+                    this.cc.height = document.querySelector('video').videoHeight;
+                    t2t2 = cc.getContext('2d').drawImage(document.querySelector('video'), 0, 0);
+                    result = new Promise((r) => cc.toBlob((blob) => r(blob), 'image/jpeg'));
+                    result.then(dd => this.dta = dd);
+                    document.querySelector('img').src = URL.createObjectURL(dta);
+
+                    this.ctx.drawImage(document.querySelector('img'), 10, 10);
+                })
+            });
+
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>
