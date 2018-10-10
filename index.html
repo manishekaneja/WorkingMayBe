@@ -7,6 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow: hidden;
+        }
+
         #canv {
             border: 1px solid black;
             z-index: 10;
@@ -31,7 +42,7 @@
 </head>
 
 
-<body style="padding:'0px';overflow:hidden">
+<body>
     <!-- <canvas id="canv"></canvas> -->
     <video id="vid"></video>
     <script>
@@ -58,10 +69,7 @@
                 });
             });
         })
-
     </script>
-
-
 </body>
 
 </html>
